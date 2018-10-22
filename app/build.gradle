@@ -26,9 +26,11 @@ android.sourceSets.main {
 }
 
 dependencies {
+    def supportVersion = "27.1.1"
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation([
-            "com.android.support:appcompat-v7:27.1.1",
+            "com.android.support:appcompat-v7:$supportVersion",
+            "com.android.support:gridlayout-v7:$supportVersion",
             "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
     ])
 }
