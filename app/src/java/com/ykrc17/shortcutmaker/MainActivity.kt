@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         intent.getStringExtra(EXTRA_LAUNCH_PACKAGE)?.also {
             startActivity(packageManager.getLaunchIntentForPackage(it))
+            finish()
             return
         }
         setContentView(R.layout.activity_main)
