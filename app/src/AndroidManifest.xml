@@ -18,6 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".RedirectActivity"
+            android:theme="@style/TransparentTheme">
+            <intent-filter>
+                <action android:name="com.ykrc17.intent.action.REDIRECT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

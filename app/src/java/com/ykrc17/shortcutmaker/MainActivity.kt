@@ -20,11 +20,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        intent.getStringExtra(EXTRA_LAUNCH_PACKAGE)?.also {
-            startActivity(packageManager.getLaunchIntentForPackage(it))
-            finish()
-            return
-        }
         setContentView(R.layout.activity_main)
 
         findViewById<Button>(R.id.btn_create).setOnClickListener {
@@ -73,9 +68,5 @@ class MainActivity : AppCompatActivity() {
 
     private fun createAppDetailsIntent() = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
         data = Uri.parse("package:$packageName")
-    }
-
-    companion object {
-        const val EXTRA_LAUNCH_PACKAGE = "extra.launch_package"
     }
 }
