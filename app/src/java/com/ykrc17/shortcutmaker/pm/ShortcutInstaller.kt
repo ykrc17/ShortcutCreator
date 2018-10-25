@@ -4,7 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.BitmapFactory
+import android.graphics.*
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
@@ -14,6 +14,7 @@ import android.support.v4.graphics.drawable.IconCompat
 import com.ykrc17.shortcutmaker.BuildConfig
 import com.ykrc17.shortcutmaker.RedirectActivity
 import com.ykrc17.shortcutmaker.model.ShortcutInfoModel
+import com.ykrc17.shortcutmaker.res.DP
 
 object ShortcutInstaller {
     private const val ID = BuildConfig.APPLICATION_ID
@@ -24,7 +25,7 @@ object ShortcutInstaller {
         requestShortcutPermission(context) {
             val shortcutInfoCompat = ShortcutInfoCompat.Builder(context, ID)
                     .setShortLabel(info.label)
-                    .setIcon(IconCompat.createWithBitmap(BitmapFactory.decodeFile(info.iconPath)))
+                    .setIcon(IconCompat.createWithBitmap(createRoundedBitmap(info.iconPath)))
                     .setIntent(createRedirectIntent(context, info))
                     .build()
             ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null)
@@ -47,6 +48,22 @@ object ShortcutInstaller {
 
     private fun createAppDetailsIntent(context: Context) = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
         data = Uri.parse("package:${context.packageName}")
+    }
+
+    private fun createRoundedBitmap(iconPath: String): Bitmap {
+        // 将bitmap转换为mutable
+        val inBmp = BitmapFactory.decodeFile(iconPath).run { copy(config, true) }
+        val outBmp = Bitmap.createBitmap(inBmp.width, inBmp.height, Bitmap.Config.ARGB_8888)
+        Canvas(outBmp).apply {
+            val radius = DP(16).toPx()
+            val paint = Paint().apply {
+                isAntiAlias = true
+                color = Color.WHITE
+            }
+            drawRoundRect(RectF(0f, 0f, width.toFloat(), height.toFloat()), radius, radius, paint)
+            drawBitmap(inBmp, 0f, 0f, paint.apply { xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN) })
+        }
+        return outBmp
     }
 
     private fun createRedirectIntent(context: Context, info: ShortcutInfoModel) = Intent(context, RedirectActivity::class.java)
