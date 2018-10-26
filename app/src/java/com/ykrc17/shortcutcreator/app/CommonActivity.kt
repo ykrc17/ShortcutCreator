@@ -1,6 +1,5 @@
 package com.ykrc17.shortcutcreator.app
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -23,6 +22,14 @@ class CommonActivity : AppCompatActivity() {
                 putExtras(extras)
             }
             context.startActivity(intent)
+        }
+
+        fun jump(activity: AppCompatActivity, presenterClass: Class<out Presenter<*>>, requestCode: Int, extras: Bundle = Bundle()) {
+            val intent = Intent(activity, CommonActivity::class.java).apply {
+                putExtra(EXTRA_PRESENTER_CLASS, presenterClass)
+                putExtras(extras)
+            }
+            activity.startActivityForResult(intent, requestCode)
         }
     }
 }

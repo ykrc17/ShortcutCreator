@@ -1,9 +1,12 @@
 package com.ykrc17.shortcutcreator.app.select.ui
 
+import android.app.Activity
 import android.arch.lifecycle.LifecycleOwner
+import android.content.Intent
+import android.content.pm.ApplicationInfo
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import com.ykrc17.shortcutcreator.app.select.model.AppInfoModel
+import com.ykrc17.shortcutcreator.app.select.model.AppListModel
 import com.ykrc17.shortcutcreator.arch.View
 
 class SelectAppView(activity: AppCompatActivity) : View<SelectAppPresenter>(activity) {
@@ -19,11 +22,17 @@ class SelectAppView(activity: AppCompatActivity) : View<SelectAppPresenter>(acti
         views.apply {
             rv_app_list.layoutManager = LinearLayoutManager(activity)
             rv_app_list.adapter = adapter
+            adapter.onItemClickListener = {
+                val intent = Intent()
+                intent.putExtra(ApplicationInfo::class.java.canonicalName, it.appInfo)
+                activity.setResult(Activity.RESULT_OK, intent)
+                activity.finish()
+            }
         }
         presenter.asyncLoadAppList()
     }
 
-    fun appendAppList(result: AppInfoModel) {
+    fun appendAppList(result: AppListModel) {
         adapter.add(result)
     }
 

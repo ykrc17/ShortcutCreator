@@ -16,6 +16,8 @@ public class MainBinding {
 
   public EditText et_shortcut_label;
 
+  public ImageView iv_shortcut_icon;
+
   public Button btn_choose_icon;
 
   public Button btn_create;
@@ -32,6 +34,7 @@ public class MainBinding {
     tv_target_label = (TextView) view.findViewById(R.id.tv_target_label);
     btn_choose_target = (Button) view.findViewById(R.id.btn_choose_target);
     et_shortcut_label = (EditText) view.findViewById(R.id.et_shortcut_label);
+    iv_shortcut_icon = (ImageView) view.findViewById(R.id.iv_shortcut_icon);
     btn_choose_icon = (Button) view.findViewById(R.id.btn_choose_icon);
     btn_create = (Button) view.findViewById(R.id.btn_create);
   }

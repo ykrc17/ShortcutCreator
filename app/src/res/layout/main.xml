@@ -16,7 +16,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1st, 选择目标应用" />
+            android:text="1st, 选择目标应用"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,16 +37,17 @@
 
             <Button
                 android:id="@+id/btn_choose_target"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="选择应用" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2nd, 快捷方式名" />
+            android:layout_marginTop="4dp"
+            android:text="2nd, 快捷方式名"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_shortcut_label"
@@ -55,13 +57,32 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="3rd, 快捷方式图标" />
+            android:layout_marginTop="4dp"
+            android:text="3rd, 快捷方式图标"
+            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btn_choose_icon"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="选择图标" />
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_shortcut_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_choose_icon"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="选择图标\n(在做了)" />
+        </LinearLayout>
     </LinearLayout>
 
     <Button

@@ -1,4 +1,6 @@
 package com.ykrc17.shortcutcreator.app.model
 
-class ShortcutInfoModel(var label: String, var iconPath: String, var packageName: String) {
+import android.graphics.Bitmap
+
+class ShortcutInfoModel(var label: String, var icon: Bitmap, var packageName: String) {
 }
