@@ -6,13 +6,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="TransparentTheme.Base">
+    <style name="TransparentThemeBase">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="TransparentTheme" parent="TransparentTheme.Base"/>
+    <style name="TransparentTheme" parent="TransparentThemeBase"/>
 
 </resources>

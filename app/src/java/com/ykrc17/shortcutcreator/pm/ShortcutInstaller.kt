@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.*
-import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.support.v4.content.pm.ShortcutInfoCompat
@@ -36,7 +35,7 @@ object ShortcutInstaller {
             AlertDialog.Builder(context).apply {
                 setMessage("创建快捷方式可能需要权限")
                 setNegativeButton("取消") { _: DialogInterface, _: Int -> }
-                setNeutralButton("前往权限页面") { _: DialogInterface, _: Int -> context.startActivity(createAppDetailsIntent(context)) }
+                setNeutralButton("前往设置") { _: DialogInterface, _: Int -> context.startActivity(createPermissionIntent(context)) }
                 setPositiveButton("直接创建") { _: DialogInterface, _: Int -> callback() }
                 show()
             }
@@ -46,8 +45,12 @@ object ShortcutInstaller {
         }
     }
 
-    private fun createAppDetailsIntent(context: Context) = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-        data = Uri.parse("package:${context.packageName}")
+    private fun createPermissionIntent(context: Context): Intent {
+        return if (Build.MANUFACTURER == "HUAWEI") {
+            Intent("huawei.intent.action.HSM_PERMISSION_MANAGER")
+        } else {
+            Intent(Settings.ACTION_SETTINGS)
+        }
     }
 
     private fun createRoundedBitmap(iconPath: String) = createRoundedBitmap(BitmapFactory.decodeFile(iconPath))

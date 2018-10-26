@@ -11,9 +11,22 @@ android {
         targetSdkVersion 28
         versionName new SimpleDateFormat("yyMMdd").format(new Date())
         versionCode versionName.toInteger()
+        resConfigs "xxhdpi", "ldltr", "appliance"
+    }
+    signingConfigs {
+        release {//发布版本的签名配置
+            storeFile file("keystore.jks")
+            keyAlias "key0"
+            storePassword "123456"
+            keyPassword "123456"
+        }
     }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -35,4 +48,19 @@ dependencies {
             "com.android.support:recyclerview-v7:$supportVersion",
             "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
     ])
+}
+
+
+tasks.whenTaskAdded {
+    if (it.name == "packageRelease") {
+        it.doLast {
+            copy {
+                from("$buildDir/outputs/apk/release") {
+                    include "*.apk"
+                    rename("app-release", "shortcut-creator-${android.defaultConfig.versionName}")
+                }
+                into rootProject.file("release")
+            }
+        }
+    }
 }
