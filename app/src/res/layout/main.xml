@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".app.MainActivity"
     tools:package=".layout">
 
-    <android.support.v7.widget.GridLayout
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1st, 选择目标app" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/iv_target_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
         <TextView
-            android:id="@+id/tv_choose_app"
+            android:id="@+id/tv_target_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_columnWeight="2" />
+            android:layout_weight="3" />
 
         <Button
-            android:id="@+id/btn_choose_app"
+            android:id="@+id/btn_choose_target"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="选择应用"
-            app:layout_columnWeight="1" />
-    </android.support.v7.widget.GridLayout>
+            android:layout_weight="1"
+            android:text="选择应用" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_create"

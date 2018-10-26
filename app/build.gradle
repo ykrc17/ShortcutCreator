@@ -32,7 +32,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation([
             "com.android.support:appcompat-v7:$supportVersion",
-            "com.android.support:gridlayout-v7:$supportVersion",
+            "com.android.support:recyclerview-v7:$supportVersion",
             "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
     ])
 }

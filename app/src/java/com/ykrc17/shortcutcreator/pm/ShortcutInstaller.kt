@@ -12,8 +12,8 @@ import android.support.v4.content.pm.ShortcutInfoCompat
 import android.support.v4.content.pm.ShortcutManagerCompat
 import android.support.v4.graphics.drawable.IconCompat
 import com.ykrc17.shortcutcreator.BuildConfig
-import com.ykrc17.shortcutcreator.RedirectActivity
-import com.ykrc17.shortcutcreator.model.ShortcutInfoModel
+import com.ykrc17.shortcutcreator.app.RedirectActivity
+import com.ykrc17.shortcutcreator.app.model.ShortcutInfoModel
 import com.ykrc17.shortcutcreator.res.DP
 
 object ShortcutInstaller {
