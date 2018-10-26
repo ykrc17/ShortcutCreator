@@ -20,11 +20,11 @@ class SelectAppView(activity: AppCompatActivity) : View<SelectAppPresenter>(acti
             rv_app_list.layoutManager = LinearLayoutManager(activity)
             rv_app_list.adapter = adapter
         }
-        presenter.loadAppList()
+        presenter.asyncLoadAppList()
     }
 
-    fun showAppList(result: ArrayList<AppInfoModel>) {
-        adapter.addAll(result)
+    fun appendAppList(result: AppInfoModel) {
+        adapter.add(result)
     }
 
     override fun onStart(owner: LifecycleOwner?) {

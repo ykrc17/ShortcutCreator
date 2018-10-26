@@ -10,6 +10,8 @@ public class SelectAppItemBinding {
 
   public TextView tv_label;
 
+  public TextView tv_package_name;
+
   public SelectAppItemBinding() {
   }
 
@@ -20,6 +22,7 @@ public class SelectAppItemBinding {
   public void bind(View view) {
     iv_icon = (ImageView) view.findViewById(R.id.iv_icon);
     tv_label = (TextView) view.findViewById(R.id.tv_label);
+    tv_package_name = (TextView) view.findViewById(R.id.tv_package_name);
   }
 
   public int getLayoutRes() {
