@@ -6,7 +6,7 @@ apply plugin: "kotlin-android"
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.ykrc17.shortcutmaker"
+        applicationId "com.ykrc17.shortcutcreator"
         minSdkVersion 18
         targetSdkVersion 28
         versionName new SimpleDateFormat("yyMMdd").format(new Date())

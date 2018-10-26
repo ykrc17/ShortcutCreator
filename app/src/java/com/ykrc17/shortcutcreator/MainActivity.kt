@@ -1,13 +1,13 @@
-package com.ykrc17.shortcutmaker
+package com.ykrc17.shortcutcreator
 
 import android.Manifest
 import android.os.Bundle
 import android.os.Environment
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
-import com.ykrc17.shortcutmaker.model.ShortcutInfoModel
-import com.ykrc17.shortcutmaker.pm.PermissionManager
-import com.ykrc17.shortcutmaker.pm.ShortcutInstaller
+import com.ykrc17.shortcutcreator.model.ShortcutInfoModel
+import com.ykrc17.shortcutcreator.pm.PermissionManager
+import com.ykrc17.shortcutcreator.pm.ShortcutInstaller
 
 class MainActivity : AppCompatActivity() {
     private lateinit var permissionManager: PermissionManager

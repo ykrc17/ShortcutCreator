@@ -1,9 +1,10 @@
-package com.ykrc17.shortcutmaker.layout;
+package com.ykrc17.shortcutcreator.layout;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.ykrc17.shortcutmaker.R;
+
+import com.ykrc17.shortcutcreator.R;
 
 public class ActivityMainBinding {
   public TextView tv_choose_app;

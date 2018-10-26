@@ -1,4 +1,4 @@
-package com.ykrc17.shortcutmaker.pm
+package com.ykrc17.shortcutcreator.pm
 
 import android.app.AlertDialog
 import android.content.Context
@@ -11,10 +11,10 @@ import android.provider.Settings
 import android.support.v4.content.pm.ShortcutInfoCompat
 import android.support.v4.content.pm.ShortcutManagerCompat
 import android.support.v4.graphics.drawable.IconCompat
-import com.ykrc17.shortcutmaker.BuildConfig
-import com.ykrc17.shortcutmaker.RedirectActivity
-import com.ykrc17.shortcutmaker.model.ShortcutInfoModel
-import com.ykrc17.shortcutmaker.res.DP
+import com.ykrc17.shortcutcreator.BuildConfig
+import com.ykrc17.shortcutcreator.RedirectActivity
+import com.ykrc17.shortcutcreator.model.ShortcutInfoModel
+import com.ykrc17.shortcutcreator.res.DP
 
 object ShortcutInstaller {
     private const val ID = BuildConfig.APPLICATION_ID

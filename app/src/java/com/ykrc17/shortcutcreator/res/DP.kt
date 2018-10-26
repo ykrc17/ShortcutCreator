@@ -1,4 +1,4 @@
-package com.ykrc17.shortcutmaker.res
+package com.ykrc17.shortcutcreator.res
 
 import android.content.res.Resources
 

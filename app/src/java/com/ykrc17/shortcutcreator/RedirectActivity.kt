@@ -1,4 +1,4 @@
-package com.ykrc17.shortcutmaker
+package com.ykrc17.shortcutcreator
 
 import android.annotation.SuppressLint
 import android.app.Activity

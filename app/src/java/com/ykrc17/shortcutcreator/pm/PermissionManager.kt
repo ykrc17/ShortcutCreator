@@ -1,4 +1,4 @@
-package com.ykrc17.shortcutmaker.pm
+package com.ykrc17.shortcutcreator.pm
 
 import android.app.Activity
 import android.content.pm.PackageManager

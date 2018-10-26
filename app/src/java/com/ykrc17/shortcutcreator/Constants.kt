@@ -1,4 +1,4 @@
-package com.ykrc17.shortcutmaker
+package com.ykrc17.shortcutcreator
 
 
 internal const val ACTION_INSTALL_SHORTCUT = "com.android.launcher.action.INSTALL_SHORTCUT"
