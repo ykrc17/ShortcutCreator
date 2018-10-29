@@ -3,6 +3,7 @@ package com.ykrc17.shortcutcreator.app
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.ApplicationInfo
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -13,6 +14,7 @@ import com.ykrc17.shortcutcreator.app.model.ShortcutInfoModel
 import com.ykrc17.shortcutcreator.app.select.ui.SelectAppPresenter
 import com.ykrc17.shortcutcreator.pm.PermissionManager
 import com.ykrc17.shortcutcreator.pm.ShortcutInstaller
+import com.ykrc17.shortcutcreator.res.DP
 
 class MainActivity : AppCompatActivity() {
     private lateinit var permissionManager: PermissionManager
@@ -61,7 +63,12 @@ class MainActivity : AppCompatActivity() {
     private fun createShortcut(view: View) {
         targetAppInfo?.also {
             val shortcutLabel = views.et_shortcut_label.text.toString()
-            val shortcutIcon = BitmapFactory.decodeResource(resources, R.drawable.llz, BitmapFactory.Options().apply { inTargetDensity = 1 })
+            val originBmp = BitmapFactory.decodeResource(resources, R.drawable.llz)
+            val size = DP(80).toPxInt()
+            val shortcutIcon = Bitmap.createScaledBitmap(originBmp, size, size, true)
+            if (originBmp !== shortcutIcon) {
+                originBmp.recycle()
+            }
             val shortcutPackageName = it.packageName
             ShortcutInstaller.install(this@MainActivity, ShortcutInfoModel(shortcutLabel, shortcutIcon, shortcutPackageName))
         }
