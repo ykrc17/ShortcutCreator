@@ -11,7 +11,7 @@ import android.view.View
 import com.ykrc17.shortcutcreator.R
 import com.ykrc17.shortcutcreator.app.layout.MainBinding
 import com.ykrc17.shortcutcreator.app.model.ShortcutInfoModel
-import com.ykrc17.shortcutcreator.app.select.ui.SelectAppPresenter
+import com.ykrc17.shortcutcreator.app.select.ui.SelectAppView
 import com.ykrc17.shortcutcreator.pm.PermissionManager
 import com.ykrc17.shortcutcreator.pm.ShortcutInstaller
 import com.ykrc17.shortcutcreator.res.DP
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         views.apply {
             iv_shortcut_icon.setImageResource(R.drawable.llz)
             btn_choose_target.setOnClickListener {
-                CommonActivity.jump(this@MainActivity, SelectAppPresenter::class.java, SelectAppPresenter::class.java.hashCode() and 0xFF)
+                CommonActivity.jump(this@MainActivity, SelectAppView::class.java, SelectAppView::class.java.hashCode() and 0xFF)
             }
             btn_create.setOnClickListener(this@MainActivity::createShortcut)
         }
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == SelectAppPresenter::class.java.hashCode() and 0xFF && resultCode == Activity.RESULT_OK) {
+        if (requestCode == SelectAppView::class.java.hashCode() and 0xFF && resultCode == Activity.RESULT_OK) {
             targetAppInfo = data?.getParcelableExtra(ApplicationInfo::class.java.canonicalName) as ApplicationInfo
             showTargetAppInfo()
         }

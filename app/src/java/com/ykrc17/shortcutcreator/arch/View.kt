@@ -1,13 +1,13 @@
 package com.ykrc17.shortcutcreator.arch
 
-import android.arch.lifecycle.CompleteLifecycleObserver
 import android.support.v7.app.AppCompatActivity
 
-abstract class View<P : Any>(val activity: AppCompatActivity) : CompleteLifecycleObserver {
-
+abstract class View<P : Any>(activity: AppCompatActivity) : ActivityDelegate(activity) {
     lateinit var presenter: P
 
-    init {
-        activity.lifecycle.addObserver(this)
+    fun doCreatePresenter() {
+        presenter = onCreatePresenter()
     }
+
+    abstract fun onCreatePresenter(): P
 }

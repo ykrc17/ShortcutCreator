@@ -11,7 +11,10 @@ import com.ykrc17.shortcutcreator.arch.View
 
 class SelectAppView(activity: AppCompatActivity) : View<SelectAppPresenter>(activity) {
     private val views = SelectAppBinding()
+
     private val adapter = AppListAdapter(activity)
+
+    override fun onCreatePresenter() = SelectAppPresenter(this)
 
     override fun onCreate(owner: LifecycleOwner?) {
         activity.apply {

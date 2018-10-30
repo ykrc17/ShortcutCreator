@@ -4,29 +4,30 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.ykrc17.shortcutcreator.arch.Presenter
+import com.ykrc17.shortcutcreator.arch.View
 
 class CommonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val presenterClass = intent.getSerializableExtra(EXTRA_PRESENTER_CLASS) as Class<*>
-        val presenter: Presenter<*> = presenterClass.getConstructor(AppCompatActivity::class.java).newInstance(this) as Presenter<*>
+        val viewClass = intent.getSerializableExtra(EXTRA_VIEW_CLASS) as Class<*>
+        val view: View<*> = viewClass.getConstructor(AppCompatActivity::class.java).newInstance(this) as View<*>
+        view.doCreatePresenter()
         super.onCreate(savedInstanceState)
     }
 
     companion object {
-        private const val EXTRA_PRESENTER_CLASS = "extra.persenter.class"
+        private const val EXTRA_VIEW_CLASS = "extra.view.class"
 
-        fun jump(context: Context, presenterClass: Class<out Presenter<*>>, extras: Bundle = Bundle()) {
+        fun jump(context: Context, presenterClass: Class<out View<*>>, extras: Bundle = Bundle()) {
             val intent = Intent(context, CommonActivity::class.java).apply {
-                putExtra(EXTRA_PRESENTER_CLASS, presenterClass)
+                putExtra(EXTRA_VIEW_CLASS, presenterClass)
                 putExtras(extras)
             }
             context.startActivity(intent)
         }
 
-        fun jump(activity: AppCompatActivity, presenterClass: Class<out Presenter<*>>, requestCode: Int, extras: Bundle = Bundle()) {
+        fun jump(activity: AppCompatActivity, presenterClass: Class<out View<*>>, requestCode: Int, extras: Bundle = Bundle()) {
             val intent = Intent(activity, CommonActivity::class.java).apply {
-                putExtra(EXTRA_PRESENTER_CLASS, presenterClass)
+                putExtra(EXTRA_VIEW_CLASS, presenterClass)
                 putExtras(extras)
             }
             activity.startActivityForResult(intent, requestCode)
