@@ -1,4 +1,4 @@
-package com.ykrc17.shortcutcreator.app.model
+package com.ykrc17.shortcutcreator.app.shortcut.model
 
 import android.graphics.Bitmap
 
