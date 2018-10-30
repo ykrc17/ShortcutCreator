@@ -6,6 +6,7 @@ import android.content.pm.ApplicationInfo
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import com.ykrc17.shortcutcreator.BuildConfig
 import com.ykrc17.shortcutcreator.R
 import com.ykrc17.shortcutcreator.app.layout.MainBinding
 import com.ykrc17.shortcutcreator.app.pickapp.ui.PickAppView
@@ -22,7 +23,7 @@ class MainActivity : BaseActivity(), ShortcutInstallerCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
-        supportActionBar?.title = "快捷方式生成器"
+//        supportActionBar?.title = "${getString(R.string.app_name)}(${BuildConfig.VERSION_NAME})"
         permissionManager = PermissionManager(this)
         views = MainBinding(window.decorView)
         shortcutInstaller = ShortcutInstaller(this)
@@ -39,6 +40,7 @@ class MainActivity : BaseActivity(), ShortcutInstallerCallback {
             btn_create.setOnClickListener {
                 this@MainActivity.createShortcut()
             }
+            tv_version.text = "Ver.${BuildConfig.VERSION_NAME}"
         }
 
         setDefaultShortcutInfo()

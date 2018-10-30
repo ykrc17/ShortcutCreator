@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:text="2nd, 快捷方式名"
             android:textStyle="bold" />
 
@@ -57,13 +57,15 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:text="3rd, 快捷方式图标"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="8dp">
 
             <ImageView
                 android:id="@+id/iv_shortcut_icon"
@@ -89,4 +91,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="创建" />
+
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_create"
+        android:layout_alignParentLeft="true"
+        android:textColor="@android:color/darker_gray"
+        tools:text="VERSION" />
 </RelativeLayout>

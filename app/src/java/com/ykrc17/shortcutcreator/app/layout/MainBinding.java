@@ -22,6 +22,8 @@ public class MainBinding {
 
   public Button btn_create;
 
+  public TextView tv_version;
+
   public MainBinding() {
   }
 
@@ -37,6 +39,7 @@ public class MainBinding {
     iv_shortcut_icon = (ImageView) view.findViewById(R.id.iv_shortcut_icon);
     btn_choose_icon = (Button) view.findViewById(R.id.btn_choose_icon);
     btn_create = (Button) view.findViewById(R.id.btn_create);
+    tv_version = (TextView) view.findViewById(R.id.tv_version);
   }
 
   public int getLayoutRes() {
