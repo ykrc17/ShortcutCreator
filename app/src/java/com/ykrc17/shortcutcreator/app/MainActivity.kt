@@ -23,7 +23,6 @@ class MainActivity : BaseActivity(), ShortcutInstallerCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
-//        supportActionBar?.title = "${getString(R.string.app_name)}(${BuildConfig.VERSION_NAME})"
         permissionManager = PermissionManager(this)
         views = MainBinding(window.decorView)
         shortcutInstaller = ShortcutInstaller(this)

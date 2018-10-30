@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ApplicationInfo
+import android.content.pm.ShortcutManager
 import android.graphics.*
 import android.net.Uri
 import android.os.Build
@@ -21,6 +22,7 @@ import com.ykrc17.shortcutcreator.widget.toast
 class ShortcutInstaller(private val callback: ShortcutInstallerCallback) {
     companion object CONSTANTS {
         private const val ACTION = "com.ykrc17.intent.action.REDIRECT"
+        private val SHOULD_USE_SHORTCUT_MANAGER = Build.VERSION.SDK_INT >= 26
     }
 
     private var targetAppInfo: ApplicationInfo? = null
@@ -36,9 +38,26 @@ class ShortcutInstaller(private val callback: ShortcutInstallerCallback) {
                         .setIcon(IconCompat.createWithBitmap(shortcutBmp))
                         .setIntent(createRedirectIntent(context, targetAppInfo!!.packageName))
                         .build()
+                if (tryUpdateShortcut(context, shortcutInfoCompat)) {
+                    return@requestShortcutPermission
+                }
                 ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null)
             }
         }
+    }
+
+    private fun tryUpdateShortcut(context: Context, shortcutInfoCompat: ShortcutInfoCompat): Boolean {
+        if (SHOULD_USE_SHORTCUT_MANAGER) {
+            context.getSystemService(ShortcutManager::class.java).apply {
+                if (pinnedShortcuts.any { it.id == shortcutInfoCompat.id }) {
+                    if (updateShortcuts(listOf(shortcutInfoCompat.toShortcutInfo()))) {
+                        context.toast("已更新快捷方式")
+                        return true
+                    }
+                }
+            }
+        }
+        return false
     }
 
     fun setTargetAppInfo(newTargetAppInfo: ApplicationInfo) {
@@ -77,7 +96,7 @@ class ShortcutInstaller(private val callback: ShortcutInstallerCallback) {
     }
 
     private fun requestShortcutPermission(context: Context, callback: () -> Unit) {
-        if (Build.VERSION.SDK_INT >= 26) {
+        if (SHOULD_USE_SHORTCUT_MANAGER) {
             AlertDialog.Builder(context).apply {
                 setMessage("创建快捷方式可能需要权限")
                 setNegativeButton("取消") { _: DialogInterface, _: Int -> }
