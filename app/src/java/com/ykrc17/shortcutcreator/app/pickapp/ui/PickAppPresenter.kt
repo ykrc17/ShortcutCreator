@@ -1,10 +1,10 @@
-package com.ykrc17.shortcutcreator.app.select.ui
+package com.ykrc17.shortcutcreator.app.pickapp.ui
 
 import android.os.AsyncTask
-import com.ykrc17.shortcutcreator.app.select.model.AppListModel
+import com.ykrc17.shortcutcreator.app.pickapp.model.AppListModel
 import com.ykrc17.shortcutcreator.arch.Presenter
 
-class SelectAppPresenter(view: SelectAppView) : Presenter<SelectAppView>(view) {
+class PickAppPresenter(view: PickAppView) : Presenter<PickAppView>(view) {
 
     fun asyncLoadAppList() {
         AsyncTask.THREAD_POOL_EXECUTOR.execute {

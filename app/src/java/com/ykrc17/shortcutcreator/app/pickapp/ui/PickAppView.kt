@@ -1,4 +1,4 @@
-package com.ykrc17.shortcutcreator.app.select.ui
+package com.ykrc17.shortcutcreator.app.pickapp.ui
 
 import android.app.Activity
 import android.arch.lifecycle.LifecycleOwner
@@ -6,15 +6,15 @@ import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import com.ykrc17.shortcutcreator.app.select.model.AppListModel
+import com.ykrc17.shortcutcreator.app.pickapp.model.AppListModel
 import com.ykrc17.shortcutcreator.arch.View
 
-class SelectAppView(activity: AppCompatActivity) : View<SelectAppPresenter>(activity) {
-    private val views = SelectAppBinding()
+class PickAppView(activity: AppCompatActivity) : View<PickAppPresenter>(activity) {
+    private val views = PickAppBinding()
 
     private val adapter = AppListAdapter(activity)
 
-    override fun onCreatePresenter() = SelectAppPresenter(this)
+    override fun onCreatePresenter() = PickAppPresenter(this)
 
     override fun onCreate(owner: LifecycleOwner?) {
         activity.apply {

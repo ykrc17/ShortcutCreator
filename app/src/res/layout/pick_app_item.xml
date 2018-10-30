@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="4dp"
-    tools:package=".app.select.ui">
+    tools:package=".app.pickapp.ui">
 
     <ImageView
         android:id="@+id/iv_icon"

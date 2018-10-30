@@ -1,21 +1,21 @@
-package com.ykrc17.shortcutcreator.app.select.ui;
+package com.ykrc17.shortcutcreator.app.pickapp.ui;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ykrc17.shortcutcreator.R;
 
-public class SelectAppItemBinding {
+public class PickAppItemBinding {
   public ImageView iv_icon;
 
   public TextView tv_label;
 
   public TextView tv_package_name;
 
-  public SelectAppItemBinding() {
+  public PickAppItemBinding() {
   }
 
-  public SelectAppItemBinding(View view) {
+  public PickAppItemBinding(View view) {
     bind(view);
   }
 
@@ -26,6 +26,6 @@ public class SelectAppItemBinding {
   }
 
   public int getLayoutRes() {
-    return R.layout.select_app_item;
+    return R.layout.pick_app_item;
   }
 }

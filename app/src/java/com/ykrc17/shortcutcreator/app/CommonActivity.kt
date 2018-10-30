@@ -17,17 +17,17 @@ class CommonActivity : AppCompatActivity() {
     companion object {
         private const val EXTRA_VIEW_CLASS = "extra.view.class"
 
-        fun jump(context: Context, presenterClass: Class<out View<*>>, extras: Bundle = Bundle()) {
+        fun jump(context: Context, viewClass: Class<out View<*>>, extras: Bundle = Bundle()) {
             val intent = Intent(context, CommonActivity::class.java).apply {
-                putExtra(EXTRA_VIEW_CLASS, presenterClass)
+                putExtra(EXTRA_VIEW_CLASS, viewClass)
                 putExtras(extras)
             }
             context.startActivity(intent)
         }
 
-        fun jump(activity: AppCompatActivity, presenterClass: Class<out View<*>>, requestCode: Int, extras: Bundle = Bundle()) {
+        fun jump(activity: AppCompatActivity, viewClass: Class<out View<*>>, requestCode: Int, extras: Bundle = Bundle()) {
             val intent = Intent(activity, CommonActivity::class.java).apply {
-                putExtra(EXTRA_VIEW_CLASS, presenterClass)
+                putExtra(EXTRA_VIEW_CLASS, viewClass)
                 putExtras(extras)
             }
             activity.startActivityForResult(intent, requestCode)

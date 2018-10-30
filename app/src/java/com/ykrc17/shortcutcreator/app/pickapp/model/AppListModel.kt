@@ -1,4 +1,4 @@
-package com.ykrc17.shortcutcreator.app.select.model
+package com.ykrc17.shortcutcreator.app.pickapp.model
 
 import android.content.pm.ApplicationInfo
 import android.graphics.drawable.Drawable

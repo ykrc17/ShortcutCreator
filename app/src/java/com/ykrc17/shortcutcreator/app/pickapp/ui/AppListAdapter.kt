@@ -1,8 +1,8 @@
-package com.ykrc17.shortcutcreator.app.select.ui
+package com.ykrc17.shortcutcreator.app.pickapp.ui
 
 import android.content.Context
 import android.view.ViewGroup
-import com.ykrc17.shortcutcreator.app.select.model.AppListModel
+import com.ykrc17.shortcutcreator.app.pickapp.model.AppListModel
 import com.ykrc17.shortcutcreator.widget.ArrayListAdapter
 
 class AppListAdapter : ArrayListAdapter<AppListModel, AppListViewHolder> {

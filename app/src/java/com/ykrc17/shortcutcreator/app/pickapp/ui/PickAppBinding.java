@@ -1,17 +1,16 @@
-package com.ykrc17.shortcutcreator.app.select.ui;
+package com.ykrc17.shortcutcreator.app.pickapp.ui;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
 import com.ykrc17.shortcutcreator.R;
 
-public class SelectAppBinding {
+public class PickAppBinding {
   public RecyclerView rv_app_list;
 
-  public SelectAppBinding() {
+  public PickAppBinding() {
   }
 
-  public SelectAppBinding(View view) {
+  public PickAppBinding(View view) {
     bind(view);
   }
 
@@ -20,6 +19,6 @@ public class SelectAppBinding {
   }
 
   public int getLayoutRes() {
-    return R.layout.select_app;
+    return R.layout.pick_app;
   }
 }
